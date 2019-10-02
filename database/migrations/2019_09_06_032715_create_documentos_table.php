@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvisosTable extends Migration
+class CreateDocumentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateAvisosTable extends Migration
      */
     public function up()
     {
-        Schema::create('avisos', function (Blueprint $table) {
+        Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('tituloAviso');
-            $table->text('conteudoAviso');
+            $table->string('titulo');
+            $table->text('descricao');
             $table->date('data');
             $table->integer('idUsuario')->unsigned();
-            $table->integer('idSetor')->unsigned();
-
+            $table->string('arquivo');
+            $table->char('status');
             $table->foreign('idUsuario')->references('id')->on('usuarios');
-            $table->foreign('idSetor')->references('id')->on('setors');
 
             $table->timestamps();
         });
@@ -36,6 +35,6 @@ class CreateAvisosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avisos');
+        Schema::dropIfExists('documentos');
     }
 }

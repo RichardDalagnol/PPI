@@ -11,21 +11,14 @@ class CreateUsuariosTable extends Migration
      *
      * @return void
      */
-
-     public function up()
+    public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->string('nome');
-            $table->string('email');
-            //$table->string('email')->unique();
-            $table->string('senha');
-            $table->integer('idSetor')->unsigned();
-
-            $table->foreign('idSetor')->references('id')->on('setors');
-            //$table->unique('email');
-
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->boolean('admin');
             $table->rememberToken();
             $table->timestamps();
         });

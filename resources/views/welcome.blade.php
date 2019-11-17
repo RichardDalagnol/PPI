@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Mural de Avisos
+                    Teste
                 </div>
 
                 <div class="links">

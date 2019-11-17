@@ -21,8 +21,8 @@ class CreateDocumentosTable extends Migration
             $table->date('data');
             $table->integer('idUsuario')->unsigned();
             $table->string('arquivo');
-            $table->char('status');
-            $table->foreign('idUsuario')->references('id')->on('usuarios');
+            $table->boolean('flagAtivo');
+            $table->foreign('idUsuario')->references('id')->on('users');
 
             $table->timestamps();
         });

@@ -13,25 +13,31 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
-Route::get('login', function(){
+Route::get('/', 'HomeController@index');
+
+/*Route::get('login', function(){
 	return  view('login');
-});
+});*/
 
 
 Route::namespace('Admin')->prefix('admin')->group(function () {
 	
 	Route::resource('documentos', 'DocumentoController');
 	Route::resource('users', 'UsuarioController');
-	Route::post('logar', 'UsuarioController@login');
+	//Route::post('logar', 'UsuarioController@login');
 });
 
-Route::post('logar', 'UsuarioController@login');
+//Route::post('logar', 'UsuarioController@login');
 
-Route::get('/download/{file}', 'DownloadsController@download');
+//Route::get('/download/{file}', 'DownloadsController@download');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

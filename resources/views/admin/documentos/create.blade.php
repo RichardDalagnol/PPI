@@ -1,10 +1,3 @@
-<?php 
-
-	session_start();
-
-	$user = $_SESSION['user'];
-?>
-
 @extends('admin/base')
 
 @section('content')
@@ -18,7 +11,7 @@
 		</div>
 	</div>
 <div class="row mt-4">
-<form method='post' action="{{url('admin/documentos')}}">
+<form method='post' action="{{url('admin/documentos')}}" enctype="multipart/form-data">
 	@csrf
 	<label>Titulo</label>
 	<input type="text" name="titulo">
@@ -29,8 +22,10 @@
 	<label>Data</label>
 	<input type="date" name="data">
 
-	<label>Data</label>
-	<input type="text" name="user" value="<?php echo $user ?>">
+	<!--<label>Data</label>
+	<input type="text" name="user" value="">-->
+
+	<input type="file" name="doc">
 
 	<button type='submit'>Salvar</button>
 

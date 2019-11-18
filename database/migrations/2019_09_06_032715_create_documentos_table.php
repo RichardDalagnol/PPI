@@ -19,10 +19,10 @@ class CreateDocumentosTable extends Migration
             $table->string('titulo');
             $table->text('descricao');
             $table->date('data');
-            $table->integer('idUsuario')->unsigned();
+            //$table->integer('idUsuario')->unsigned();
             $table->string('arquivo');
-            $table->boolean('flagAtivo');
-            $table->foreign('idUsuario')->references('id')->on('users');
+            //$table->boolean('flagAtivo');
+            //$table->foreign('idUsuario')->references('id')->on('users');
 
             $table->timestamps();
         });

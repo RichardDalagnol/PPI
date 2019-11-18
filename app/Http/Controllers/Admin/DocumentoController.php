@@ -38,33 +38,33 @@ class DocumentoController extends Controller
     public function store(Request $request)
     {
 
-
+        $path = $request->file('doc')->store('arquivos', 'public');
         $documento = new Documentos;
-        $documento->idUsuario = $_SESSION['user'];
-        $documento->flagAtivo = true;
+        //$documento->idUsuario = $_SESSION['user'];
+        //$documento->flagAtivo = true;
         $documento->titulo = $request->titulo; 
         $documento->descricao = $request->descricao;
         $documento->data = $request->data;
 
          // Define o valor default para a variável que contém o nome da imagem 
-        $nameFile = null;
+        //$nameFile = null;
      
         // Verifica se informou o arquivo e se é válido
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        //if ($request->hasFile('image') && $request->file('image')->isValid()) {
              
             // Define um aleatório para o arquivo baseado no timestamps atual
-            $name = uniqid(date('HisYmd'));
+          //  $name = uniqid(date('HisYmd'));
      
             // Recupera a extensão do arquivo
-            $extension = $request->image->extension();
+            //$extension = $request->image->extension();
      
             // Define finalmente o nome
-            $nameFile = "{$name}.{$extension}";
+            //$nameFile = "{$name}.{$extension}";
      
             // Faz o upload:
-            $upload = $request->image->store('arquivos', $nameFile);
+            //$upload = $request->image->store('arquivos', $nameFile);
 
-            if ( !$upload )
+            /*if ( !$upload )
                 return redirect()
                             ->back()
                             ->with('error', 'Falha ao fazer upload')
@@ -72,8 +72,8 @@ class DocumentoController extends Controller
      
         }
         $documento->arquivo = $nameFile;
-
-
+*/
+        $documento->arquivo = $path;
         $documento->save();
 
         return redirect('admin/documentos');
